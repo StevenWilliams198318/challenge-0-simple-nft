@@ -12,7 +12,7 @@ import "hardhat-deploy-ethers";
 
 // If not set, it uses the hardhat account 0 private key.
 const deployerPrivateKey =
-  process.env.DEPLOYER_PRIVATE_KEY ?? "0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80";
+  process.env.DEPLOYER_PRIVATE_KEY ?? "0xaceb4e42ef731b0ccd9d7d1fd0afe189afbb2e2cccdad7c56cb42e9b9fa4f494";
 // If not set, it uses ours Etherscan default API key.
 const etherscanApiKey = process.env.ETHERSCAN_API_KEY || "DNXJA8RX2Q3VZ4URQIWP7Z68CJXQZSC6AW";
 const etherscanOptimisticApiKey = process.env.ETHERSCAN_OPTIMISTIC_API_KEY || "5WAJWBWKK5ZCWJ1HQKJ61CMY8SZRMQEK94";
@@ -34,7 +34,7 @@ const config: HardhatUserConfig = {
       },
     ],
   },
-  defaultNetwork: "localhost",
+  defaultNetwork: "optimismSepolia",
   namedAccounts: {
     deployer: {
       // By default, it will take the first Hardhat account as the deployer
@@ -56,6 +56,10 @@ const config: HardhatUserConfig = {
     },
     sepolia: {
       url: `https://rpc2.sepolia.org`,
+      accounts: [deployerPrivateKey],
+    },
+    zksyncSepolia: {
+      url: `https://sepolia.era.zksync.dev`,
       accounts: [deployerPrivateKey],
     },
     arbitrum: {
